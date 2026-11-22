@@ -1,0 +1,6 @@
+{
+  "name": "Debugging Detective",
+  "description": "An interactive Python debugging mentor for university students that builds independent diagnostic skills through guided questions and progressive hints.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

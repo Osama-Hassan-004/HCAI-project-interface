@@ -1,0 +1,170 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* 60% Dominant neutral canvas */
+  --dd-bg: #f8fafc;
+  --dd-bg-subtle: #f1f5f9;
+
+  /* 30% Structural surfaces and borders */
+  --dd-surface: #ffffff;
+  --dd-surface-elevated: #ffffff;
+  --dd-surface-muted: #f1f5f9;
+  --dd-border: #cbd5e1;
+  --dd-border-subtle: #e2e8f0;
+
+  /* Typography */
+  --dd-text: #0f172a;
+  --dd-text-secondary: #334155;
+  --dd-text-muted: #475569;
+
+  /* 10% Primary focal accent (WCAG AA compliant on light) */
+  --dd-accent: #1d4ed8;
+  --dd-accent-hover: #1e40af;
+  --dd-accent-soft: #eff6ff;
+  --dd-accent-text: #1e40af;
+  --dd-accent-on: #ffffff;
+
+  /* Semantic tokens (always paired with icon + text) */
+  --dd-demo-bg: #fffbeb;
+  --dd-demo-border: #fcd34d;
+  --dd-demo-text: #92400e;
+
+  --dd-info-bg: #eff6ff;
+  --dd-info-border: #bfdbfe;
+  --dd-info-text: #1e40af;
+
+  --dd-success-bg: #ecfdf5;
+  --dd-success-border: #a7f3d0;
+  --dd-success-text: #065f46;
+
+  --dd-danger-bg: #fef2f2;
+  --dd-danger-border: #fecaca;
+  --dd-danger-text: #991b1b;
+
+  /* Code & Traceback reading surface */
+  --dd-code-bg: #f1f5f9;
+  --dd-code-header: #e2e8f0;
+  --dd-code-border: #cbd5e1;
+  --dd-code-text: #0f172a;
+  --dd-code-line-num: #475569;
+  --dd-code-error-text: #b91c1c;
+
+  /* Focus ring */
+  --dd-focus-ring: #1d4ed8;
+
+  /* Fonts */
+  --dd-font-sans: "Plus Jakarta Sans", "IBM Plex Sans Arabic", system-ui, -apple-system, sans-serif;
+  --dd-font-arabic: "IBM Plex Sans Arabic", "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --dd-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.dark {
+  /* 60% Dominant neutral canvas */
+  --dd-bg: #0b1120;
+  --dd-bg-subtle: #0f172a;
+
+  /* 30% Structural surfaces and borders */
+  --dd-surface: #111827;
+  --dd-surface-elevated: #1e293b;
+  --dd-surface-muted: #1e293b;
+  --dd-border: #334155;
+  --dd-border-subtle: #1e293b;
+
+  /* Typography */
+  --dd-text: #f8fafc;
+  --dd-text-secondary: #e2e8f0;
+  --dd-text-muted: #94a3b8;
+
+  /* 10% Primary focal accent (WCAG AA compliant >= 4.5:1 with #ffffff) */
+  --dd-accent: #2563eb;
+  --dd-accent-hover: #1d4ed8;
+  --dd-accent-soft: #172554;
+  --dd-accent-text: #93c5fd;
+  --dd-accent-on: #ffffff;
+
+  /* Semantic tokens */
+  --dd-demo-bg: #291e09;
+  --dd-demo-border: #b45309;
+  --dd-demo-text: #fcd34d;
+
+  --dd-info-bg: #172554;
+  --dd-info-border: #1d4ed8;
+  --dd-info-text: #bfdbfe;
+
+  --dd-success-bg: #064e3b;
+  --dd-success-border: #059669;
+  --dd-success-text: #a7f3d0;
+
+  --dd-danger-bg: #450a0a;
+  --dd-danger-border: #b91c1c;
+  --dd-danger-text: #fecaca;
+
+  /* Code & Traceback reading surface (low-glare high-contrast slate) */
+  --dd-code-bg: #0d1526;
+  --dd-code-header: #162033;
+  --dd-code-border: #26354d;
+  --dd-code-text: #e2e8f0;
+  --dd-code-line-num: #94a3b8;
+  --dd-code-error-text: #fca5a5;
+
+  /* Focus ring */
+  --dd-focus-ring: #60a5fa;
+}
+
+@layer base {
+  html {
+    background-color: var(--dd-bg);
+    color: var(--dd-text);
+    font-family: var(--dd-font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+
+  html[dir="rtl"] {
+    font-family: var(--dd-font-arabic);
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: var(--dd-bg);
+    color: var(--dd-text);
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+
+  code,
+  pre,
+  kbd,
+  samp {
+    font-family: var(--dd-font-mono);
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  /* Accessible focus-visible ring across all interactive elements */
+  *:focus-visible {
+    outline: 2px solid var(--dd-focus-ring);
+    outline-offset: 2px;
+  }
+
+  .dd-code-editor-shell:has(textarea:focus-visible) {
+    outline: 2px solid var(--dd-focus-ring);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+.dd-theme-transition {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 180ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
